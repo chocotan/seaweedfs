@@ -48,6 +48,7 @@ func (dn *DataNode) AddOrUpdateVolume(v storage.VolumeInfo) (isNew, isChangedRO 
 func (dn *DataNode) getOrCreateDisk(diskType string) *Disk {
 	dn.Lock()
 	defer dn.Unlock()
+
 	c, found := dn.children[NodeId(diskType)]
 	if !found {
 		c = NewDisk(diskType)
